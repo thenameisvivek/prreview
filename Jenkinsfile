@@ -2,30 +2,24 @@ pipeline {
     agent any
 
     environment {
-        SONAR_TOKEN = credentials('sonarqube-token')
+        SONAR_SCANNER_HOME = tool 'SonarScanner'
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Build') {
-            steps {
-                echo "Build stage running"
-            }
-        }
-
-        stage('SonarQube Test') {
+        stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    echo "SonarQube connection successful"
+                    sh '''
+                        ${SONAR_SCANNER_HOME}/bin/sonar-scanner
+                    '''
                 }
             }
         }
-
     }
 }

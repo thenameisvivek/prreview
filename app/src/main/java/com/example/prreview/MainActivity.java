@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String password = "admin123"; // hardcoded credential-like value
+        String password = System.getenv("APP_PASSWORD"); // hardcoded credential-like value
         Log.d("MainActivity", "Password is: " + password); // sensitive info in logs
 
         for (int i = 0; i < 5; i++) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         printUserNameLength(); // possible NullPointerException
-        divideNumbers(10, 0);  // division by zero
+       
     }
 
     private void printUserNameLength() {

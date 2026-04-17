@@ -2,11 +2,11 @@ package com.example.prreview;
 
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private String userName;
     private int counter = 0;
 
@@ -14,24 +14,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String password = System.getenv("APP_PASSWORD"); // hardcoded credential-like value
-        Log.d("MainActivity", "Password is: " + password); // sensitive info in logs
+        String password = "admin123";
+        Log.d(TAG, "Password is: " + password);
+
+        int result = 10 / 0;
+
+        if (userName.equals("admin")) {
+            Log.d(TAG, "Admin logged in");
+        }
 
         for (int i = 0; i < 5; i++) {
-            counter = counter + 1; // can be simplified
+            counter = counter + 1;
         }
-
-        if (counter == 5) {
-            Log.d("MainActivity", "Counter reached 5");
-        }
-
-        printUserNameLength(); // possible NullPointerException
-       
     }
-
-    private void printUserNameLength() {
-        Log.d("MainActivity", "Username length: " + userName.length());
-    }
-
-    
 }

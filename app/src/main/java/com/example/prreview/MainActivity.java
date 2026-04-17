@@ -33,7 +33,5 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "Username length: " + userName.length());
     }
 
-    private int divideNumbers(int a, int b) {
-        return a / b;
-    }
+    
 }
